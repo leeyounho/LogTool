@@ -49,11 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EDALogTool.cs">
+    <Compile Include="LogTool.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EDALogTool.Designer.cs">
-      <DependentUpon>EDALogTool.cs</DependentUpon>
+    <Compile Include="LogTool.Designer.cs">
+      <DependentUpon>LogTool.cs</DependentUpon>
     </Compile>
     <Compile Include="CurrentLinkPopup.cs">
       <SubType>Form</SubType>
@@ -74,8 +74,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="EDALogTool.resx">
-      <DependentUpon>EDALogTool.cs</DependentUpon>
+    <EmbeddedResource Include="LogTool.resx">
+      <DependentUpon>LogTool.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CurrentLinkPopup.resx">
       <DependentUpon>CurrentLinkPopup.cs</DependentUpon>
