@@ -16,8 +16,6 @@ using System.Xml;
 namespace WindowsFormsApplication2
 {
     /*
-     * 3. trace 기능 완성
-     * 6. 시간대 검색은 regex로 digit만 뽑으면 됨
      * 2. consumer soap 매칭 (라인 바이 라인인데 리치텍스트박스 때문에 빠르게 하는거 생각해야 함)
      * 1. 파일을 링크하면 자동으로 sort되게 기준은 '.'을 split한 숫자들 -> Link에서
      * 4. xml formatter 빠르게, 검색도 되게, 열리는 자식단계는 옵션으로
@@ -150,7 +148,7 @@ namespace WindowsFormsApplication2
             using (FileStream fs = File.Open(fileToRead, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             using (BufferedStream bs = new BufferedStream(fs))
             using (StreamReader sr = new StreamReader(bs))
-            using (StreamWriter sw = new StreamWriter(fileToWrite))
+            using (StreamWriter sw = new StreamWriter(fileToWrite, false))
             {
                 string line;
                 while ((line = sr.ReadLine()) != null)
@@ -209,11 +207,6 @@ namespace WindowsFormsApplication2
                 if (linkedfilePaths_ConsumerLog.Any()) MessageBox.Show("Linked");
                 else MessageBox.Show("Link Failed");
             }
-            //Debug
-            //foreach (string str in LinkedfilePaths_1)
-            //{
-            //    MessageBox.Show(str);
-            //}
         }
 
         private void buttonLink2_Click(object sender, EventArgs e)
@@ -224,19 +217,16 @@ namespace WindowsFormsApplication2
                 if (linkedfilePaths_SoapMessageLog.Any()) MessageBox.Show("Linked");
                 else MessageBox.Show("Link Failed");
             }
-            //Debug
-            //foreach (string str in LinkedfilePaths_2)
-            //{
-            //    MessageBox.Show(str);
-            //}
         }
 
         private void buttonFind1_Click(object sender, EventArgs e)
         {
-            // Compare 버튼을 클릭하면
+            // Find 버튼을 클릭하면
             // textBoxLink1_1, _2, _3에서 List<string>을 가지고 와서 toCompare에 넣는다.
             // WriteLogifContains는 toCompare를 받아서
             // 조건을 만족하는 line만 출력한다.
+            //
+            // Time after before 기준은 헤더에 있는 타임 기준으로 한다. (나중에 옵션으로 뺄까 생각 중)
 
             if (!linkedfilePaths_ConsumerLog.Any())
             {
@@ -413,7 +403,7 @@ namespace WindowsFormsApplication2
             {
                 if (!linkedfilePaths_SoapMessageLog.Any())
                 {
-                    MessageBox.Show("Create Soap Link");
+                    MessageBox.Show("Link Soap Log");
                     return;
                 }
             }
@@ -422,13 +412,51 @@ namespace WindowsFormsApplication2
             {
                 if (!linkedfilePaths_ConsumerLog.Any())
                 {
-                    MessageBox.Show("Create Consumer Link");
+                    MessageBox.Show("Link Consumer Log");
                     return;
                 }
             }
 
             // Logic
+            //SoapMessage가 비어있으면 Consumer -> Soap 변환
+            if (string.IsNullOrEmpty(richTextBoxSoapMessage.Text))
+            {
+                String[] lines = richTextBoxSoapMessage.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (string consumerLine in lines)
+                {
+                    string SAMPLENUMBER = null;
+                    string DCP = null;
 
+                    foreach (string fileName in linkedfilePaths_SoapMessageLog)
+                    {
+                        using (FileStream fs = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                        using (BufferedStream bs = new BufferedStream(fs))
+                        using (StreamReader sr = new StreamReader(bs))
+                        using (StreamWriter sw = new StreamWriter(saveFilePath_1 + @"\Trace.txt", false))
+                        {
+                            string line;
+
+                            while ((line = sr.ReadLine()) != null)
+                            {
+
+                            }
+                        }
+                    }
+                }
+            }
+            else // Soap -> Consumer 변환
+            {
+                foreach (string fileName in linkedfilePaths_ConsumerLog)
+                {
+                    using (FileStream fs = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                    using (BufferedStream bs = new BufferedStream(fs))
+                    using (StreamReader sr = new StreamReader(bs))
+                    using (StreamWriter sw = new StreamWriter(saveFilePath_1 + @"\Trace.txt", false))
+                    {
+
+                    }
+                }
+            }
         }
 
         private void linkResetToolStripMenuItem_Click(object sender, EventArgs e)
@@ -812,6 +840,11 @@ namespace WindowsFormsApplication2
                     line = Regex.Replace(line, @"\sUTC_SERVER_TIME=\d+", "");
 
             return line;
+        }
+
+        private void richTextBoxSkewEQPList_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

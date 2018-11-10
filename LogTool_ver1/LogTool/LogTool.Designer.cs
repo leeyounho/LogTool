@@ -78,6 +78,7 @@
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.checkBoxDCPSplit = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnableMsgBox = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonSkewLink = new System.Windows.Forms.Button();
             this.buttonSkewCompare = new System.Windows.Forms.Button();
@@ -135,7 +136,6 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.searchClearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonConvertXML = new System.Windows.Forms.Button();
-            this.checkBoxEnableMsgBox = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.tabControlTrace.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -281,13 +281,13 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(178, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(225, 6);
             // 
             // alwaysToolStripMenuItem
             // 
             this.alwaysToolStripMenuItem.CheckOnClick = true;
             this.alwaysToolStripMenuItem.Name = "alwaysToolStripMenuItem";
-            this.alwaysToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.alwaysToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.alwaysToolStripMenuItem.Text = "Always on Top";
             this.alwaysToolStripMenuItem.CheckedChanged += new System.EventHandler(this.alwaysToolStripMenuItem_CheckedChanged);
             // 
@@ -297,7 +297,7 @@
             this.openAfterCompareToolStripMenuItem.CheckOnClick = true;
             this.openAfterCompareToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.openAfterCompareToolStripMenuItem.Name = "openAfterCompareToolStripMenuItem";
-            this.openAfterCompareToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.openAfterCompareToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.openAfterCompareToolStripMenuItem.Text = "Auto Open Text File";
             // 
             // autoToolStripMenuItem
@@ -306,18 +306,18 @@
             this.autoToolStripMenuItem.CheckOnClick = true;
             this.autoToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.autoToolStripMenuItem.Name = "autoToolStripMenuItem";
-            this.autoToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.autoToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.autoToolStripMenuItem.Text = "Auto Capitalization";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(178, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(225, 6);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.settingsToolStripMenuItem.Text = "Settings(disabled)";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
@@ -371,8 +371,8 @@
             // 
             // tabControlTrace
             // 
-            this.tabControlTrace.Controls.Add(this.tabPage3);
             this.tabControlTrace.Controls.Add(this.tabPage1);
+            this.tabControlTrace.Controls.Add(this.tabPage3);
             this.tabControlTrace.Controls.Add(this.tabPage2);
             this.tabControlTrace.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlTrace.Location = new System.Drawing.Point(0, 24);
@@ -655,6 +655,7 @@
             this.richTextBoxSkewEQPList.Size = new System.Drawing.Size(867, 151);
             this.richTextBoxSkewEQPList.TabIndex = 0;
             this.richTextBoxSkewEQPList.Text = "";
+            this.richTextBoxSkewEQPList.TextChanged += new System.EventHandler(this.richTextBoxSkewEQPList_TextChanged);
             // 
             // groupBox9
             // 
@@ -686,6 +687,16 @@
             this.checkBoxDCPSplit.TabIndex = 0;
             this.checkBoxDCPSplit.Text = "DCP Split";
             this.checkBoxDCPSplit.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxEnableMsgBox
+            // 
+            this.checkBoxEnableMsgBox.AutoSize = true;
+            this.checkBoxEnableMsgBox.Location = new System.Drawing.Point(86, 3);
+            this.checkBoxEnableMsgBox.Name = "checkBoxEnableMsgBox";
+            this.checkBoxEnableMsgBox.Size = new System.Drawing.Size(219, 16);
+            this.checkBoxEnableMsgBox.TabIndex = 1;
+            this.checkBoxEnableMsgBox.Text = "Enable Msg Box When Comparing";
+            this.checkBoxEnableMsgBox.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel8
             // 
@@ -1339,16 +1350,6 @@
             this.buttonConvertXML.Text = "→→";
             this.buttonConvertXML.UseVisualStyleBackColor = true;
             this.buttonConvertXML.Click += new System.EventHandler(this.buttonConvertXML_Click);
-            // 
-            // checkBoxEnableMsgBox
-            // 
-            this.checkBoxEnableMsgBox.AutoSize = true;
-            this.checkBoxEnableMsgBox.Location = new System.Drawing.Point(86, 3);
-            this.checkBoxEnableMsgBox.Name = "checkBoxEnableMsgBox";
-            this.checkBoxEnableMsgBox.Size = new System.Drawing.Size(219, 16);
-            this.checkBoxEnableMsgBox.TabIndex = 1;
-            this.checkBoxEnableMsgBox.Text = "Enable Msg Box When Comparing";
-            this.checkBoxEnableMsgBox.UseVisualStyleBackColor = true;
             // 
             // EDALogTool
             // 
